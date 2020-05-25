@@ -31,9 +31,9 @@ function cleanup_and_exit() {
 
 if [ "$#" -gt 0 ]
 then
-  gprbuild ${file} && ./${filename} "${args}"
+  gprbuild -gnata ${file} && ./${filename} "${args}"
 else
-  gprbuild ${file} && ./${filename}
+  gprbuild -gnata ${file} && ./${filename}
 fi
 
 # normal exit

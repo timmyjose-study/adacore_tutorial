@@ -26,9 +26,9 @@ function cleanup_and_exit() {
 
 if [ "$#" -gt 0 ]
 then
-  gnatmake -g ${file} && ./${filename} ${args}
+  gnatmake -g -gnata ${file} && ./${filename} ${args}
 else
-  gnatmake -g ${file} && ./${filename}
+  gnatmake -g -gnata ${file} && ./${filename}
 fi
 
 # normal exit
