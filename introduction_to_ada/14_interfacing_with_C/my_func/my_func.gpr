@@ -1,0 +1,31 @@
+project My_Func is
+  type Mode_Type is ("debug", "release");
+  Mode : Mode_Type := external ("mode", "release");
+
+  for Languages use ("Ada", "C");
+  for Source_Dirs use ("src");
+  for Exec_Dir use "bin/" & Mode;
+  for Object_Dir use "obj/" & Mode;
+  for Main use ("src/main.adb");
+
+  package Compiler is
+    case Mode is
+      when "debug" =>
+        for Switches ("Ada")
+          use ("-g", " -gnatwa");
+          for Switches ("C")
+          use ("-g", "-Wall", "-Werror", "-Wextra", "-std=c11");
+      when "release" =>
+        for Switches ("Ada")
+          use ("-O2", "-gnatwa");
+        for Switches ("C'") 
+          use ("-O3");
+     end case;
+  end Compiler;
+
+  package Binder is
+  end Binder;
+
+  package Linker is
+  end Linker;
+end My_Func;
