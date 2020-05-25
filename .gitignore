@@ -5,3 +5,4 @@
 **/*.bexch
 **/*__*.adb
 **/*__*.ads
+**/.DS_Store
